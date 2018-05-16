@@ -25,7 +25,6 @@ local function directive_string(env)
     local directive = ""
     if env ~= nil then directive = directive.." \"env GIN_ENV=" .. env .. ";\"" end
     if Gin.settings.daemon_off then directive = directive.." \"daemon off;\"" end
-print(directive)
     if directive:len() > 0 then directive = " -g "..directive end
     return directive
 end
