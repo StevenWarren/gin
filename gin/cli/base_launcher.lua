@@ -23,9 +23,9 @@ end
 
 local function directive_string(env)
     local directive = ""
-    if env ~= nil then directive = directive.." \"env GIN_ENV=" .. env .. ";\"" end
-    if Gin.settings.daemon_off then directive = directive.." \"daemon off;\"" end
-    if directive:len() > 0 then directive = " -g "..directive end
+    if env ~= nil then directive = directive.." env GIN_ENV=" .. env .. ";" end
+    if Gin.settings.daemon_off then directive = directive.." daemon off;" end
+    if directive:len() > 0 then directive = " -g \""..directive.."\"" end
     return directive
 end
 
@@ -37,6 +37,7 @@ local function nginx_command(env, nginx_conf_file_path, nginx_signal)
     local pwd = io.popen( "pwd" ):read( '*l' )
 
     local cmd = "openresty " .. nginx_signal .. " " .. nginx_directives .. " -p "..pwd.."/ -c " .. nginx_conf_file_path .. devnull_logs
+    print(cmd)
 
     if GIN_TRACE == true then
         print(cmd)
