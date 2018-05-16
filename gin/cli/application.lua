@@ -189,19 +189,22 @@ local Settings = {}
 Settings.development = {
     code_cache = false,
     port = 7200,
-    expose_api_console = true
+    expose_api_console = true,
+    daemon_off= true
 }
 
 Settings.test = {
     code_cache = true,
     port = 7201,
-    expose_api_console = false
+    expose_api_console = false,
+    daemon_off= true
 }
 
 Settings.production = {
     code_cache = true,
     port = 80,
-    expose_api_console = false
+    expose_api_console = false,
+    daemon_off= true
 }
 
 return Settings
