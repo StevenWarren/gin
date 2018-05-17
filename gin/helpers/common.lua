@@ -146,10 +146,9 @@ end
 
 function CommonHelpers.module_names_in_path(path)
     local modules = {}
-
     if CommonHelpers.folder_exists(path) then
         for file_name in lfs.dir(path) do
-            if file_name ~= "." and file_name ~= ".." then
+            if file_name:find("^%." ) == nil then
                 local file_path = path .. '/' .. file_name
                 local attr = lfs.attributes(file_path)
                 assert(type(attr) == "table")

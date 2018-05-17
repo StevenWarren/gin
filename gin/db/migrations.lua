@@ -40,6 +40,7 @@ end
 
 local function ensure_db_and_schema_migrations_exist(db)
     local ok, tables = pcall(function() return db:tables() end)
+    print(ok, tables)
     if ok == false then
         if is_database_not_found_error(tables) == true then
             -- database does not exist, create
