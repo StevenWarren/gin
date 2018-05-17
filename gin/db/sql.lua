@@ -45,8 +45,8 @@ function SqlDatabase:execute(sql)
     return self.adapter.execute(self.options, sql)
 end
 
-function SqlDatabase:execute_and_return_last_id(sql)
-    return self.adapter.execute_and_return_last_id(self.options, sql)
+function SqlDatabase:execute_and_return_last_id(sql, id_col)
+    return self.adapter.execute_and_return_last_id(self.options, sql, id_col)
 end
 
 

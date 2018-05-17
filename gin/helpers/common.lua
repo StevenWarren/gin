@@ -35,6 +35,7 @@ end
 -- read file
 function CommonHelpers.read_file(file_path)
     local f = iopen(file_path, "rb")
+    if not f then error("Failed to read file " .. file_path .. ". Are you on the right directory?") end
     local content = f:read("*all")
     f:close()
     return content

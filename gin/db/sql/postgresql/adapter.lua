@@ -24,7 +24,8 @@ end
 
 -- quote
 function PostgreSql.quote(options, str)
-    return ndk.set_var.set_quote_pgsql_str(str)
+    if type(str) == 'boolean' then str = str and 't' or 'f' end -- postgresql boolean
+    return ndk.set_var.set_quote_pgsql_str(tostring(str))
 end
 
 -- return list of tables
